@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 03 Praktikum 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url(background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-weight: normal;
+            letter-spacing: 4px;
+        }
+
+        .container {
+            background-color: rgba(178, 190, 195,0.8);
+            margin: 50px auto;
+            width: 550px;
+            height: 920px;
+            box-sizing: border-box;
+            padding: 30px;
+            font-size: 20px;
+        }
+
+        input, select {
+            margin: 10px 0;
+        }
+
+        #gender {
+            width: 491px;
+        }
+
+        input[type="date"] {
+            width: 485px;
+        }
+
+        #laptop {
+            width: 491px;
+        }
+
+        #card {
+            width: 483px;
+        }
+
+        #submit {
+            background-color: #2ecc71;
+            width:490px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fill in this form</h1>
+    <div class="container">
+        <label for="name">Full Name : </label><br>
+        <input type="text" id="name" size="65px" autocomplete="off">
+        <label for="email">Email : </label><br>
+        <input type="email" id="email" size="65px" autocomplete="off">
+        <label for="age">Age : </label><br>
+        <input type="text" id="age" size="65px" autocomplete="off">
+        <label for="gender">Gender : </label><br>
+        <select name="gender" id="gender">
+            <option value="">Select your gender</option>
+            <option value="cowo">Male</option>
+            <option value="cewe">Female</option>
+        </select>
+        <label for="date">Date of birth : </label><br>
+        <input type="date">
+        <label for="laptop">Choose your laptop : </label><br>
+        <select name="laptop" id="laptop">
+            <option value="">Laptop</option>
+            <optgroup label ="Asus">
+                <option value="laptop1">Laptop Asus A456UQ</option>
+                <option value="laptop2">Laptop Asus E410MA</option>
+                <option value="laptop3">Laptop Asus Vivobook K403FA</option>
+                <option value="laptop4">Laptop ASUS BR1100CKA-GJ0410</option>
+            </optgroup>
+            <optgroup label="Lenovo">
+                <option value="laptop5">Laptop Lenovo ideapad S340</option>
+                <option value="laptop6">Laptop Lenovo ideapad slim 3</option>
+                <option value="laptop7">Laptop Lenovo T440p</option>
+            </optgroup>
+        </select>
+        <label for="card">Enter your card number : </label><br>
+        <input type="number" name="card" id="card" autocomplete="off" placeholder="XXXX XXXX XXXX XXXX">
+        <label for="payment">Payment : </label><br>
+        <input type="radio" name="payment"> 1x<br>
+        <input type="radio" name="payment"> 3x<br>
+        <input type="radio" name="payment"> 6x<br>
+        <input type="radio" name="payment"> 12x<br>
+        <label for="like">Which brand do you like : </label><br>
+        <input type="checkbox"> Asus<br>
+        <input type="checkbox"> Lenovo<br>
+        <input type="checkbox"> Acer<br>
+        <input type="checkbox"> HP<br>
+        <input type="submit" id="submit">
+    </div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal03 Praktikum 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        /* Nav bar */
+
+        nav {
+            height: 250px;
+        }
+
+        .atas {
+            height: 20%;
+            background-color: #e36414;
+        }
+
+        .tengah {
+            height: 60%;
+            background-color: #fb8b24;
+            line-height: 150px;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 200;
+
+        }
+
+        .bawah {
+            height: 20%;
+            background-color: #e36414;
+        }
+
+        .kiri li {
+            list-style: none;
+            float: left;
+            margin-left: 40px;
+            margin-top: 10px;
+        }
+
+        .kanan li {
+            float: right;
+            list-style: none;
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+
+        nav a:link, nav a:visited {
+            text-decoration: none;
+            color: black;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a:active {
+            color: #9a031e;
+        }
+        /* Main */
+
+        .main {
+            background-color: #0f4c5c;
+            height: 1500px;
+        }
+
+        .text-box {
+            width: 50%;
+            margin: 0 auto;
+            color: #fff2f4;
+        }
+
+        .header {
+            display: block;
+            font-weight: 500;
+            font-size: 30px;
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        /* Button */
+        .button {
+            position:fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #5f0f40;     
+        }
+
+        .button a {
+            text-decoration: none;
+            color: #fb8b24;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="atas">
+            <ul class="kiri">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <ul class="kanan">
+                <li><a href="#">Sign up</a></li>
+                <li><a href="#">Log in</a></li>
+            </ul>
+
+        </div>
+        <div class="tengah">Music</div>
+        <div class="bawah">
+            <ul class="kiri">
+                <li><a href="#pop">Pop</a></li>
+                <li><a href="#hiphop">Hip Hop</a></li>
+                <li><a href="#rock">Rock</a></li>
+                <li><a href="#jazz">Jazz</a></li>
+                <li><a href="#traditional">Traditional</a></li>
+                <li><a href="#disco">Disco</a></li>
+                <li><a href="#funk">Funk</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="main">
+        <div class="text-box">
+            <span class="header" id="pop">Pop music</span>
+            <span class="text">A genre of popular music that originated in the West during the 1950s and 1960s. Pop
+                music is eclectic,
+                often borrowing elements from urban, dance, rock, Latin, country, and other styles. Songs are typically
+                short to medium-length with repeated choruses, melodic tunes, and hooks.</span>
+            <span class="header" id="hiphop">Hip hop music</span>
+            <span class="text">Hip hop or rap music formed in the United States in the 1970s and consists of stylized
+                rhythmic music that commonly accompanies rhythmic and rhyming speech ("rapping").</span>
+            <span class="header" id="rock">Rock music</span>
+            <span class="text">A genre of popular music that originated as "rock and roll" in the United States in the
+                1950s, and developed into a range of different styles in the 1960s and later. Compared to pop music,
+                rock places a higher degree of emphasis on musicianship, live performance, and an ideology of
+                authenticity.</span>
+            <span class="header" id="jazz">Jazz music</span>
+            <span class="text">A music genre that originated from African American communities of New Orleans during the
+                late 19th and early 20th centuries in the form of independent traditional and popular musical styles,
+                all linked by the common bonds of African American and European American musical parentage with a
+                performance orientation.</span>
+            <span class="header" id="traditional">Traditional music</span>
+            <span class="text">Musical forms that have origins many generations into the past, commonly without formal
+                notation or description, commonly familiar to people in a given culture.</span>
+            <span class="header" id="disco">Disco</span>
+            <span class="text">A genre of dance music containing elements of funk, soul, pop, and salsa that achieved
+                popularity during the mid-1970s to the early 1980s.</span>
+            <span class="header" id="funk">Funk</span>
+            <span class="text">A music genre that originated in the 1960s when African American musicians created a
+                rhythmic, danceable new form of music that de-emphasized melody and chord progressions to bring a strong
+                rhythmic groove of a bass line and drum part to the foreground.</span>
+        </div>
+    </section>
+    <div class="button">
+        <a href="#nav">Back to top</a>
+    </div>
+</body>
+
+</html>

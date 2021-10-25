@@ -6,170 +6,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soal 02 Praktikum 5</title>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,400;1,300&display=swap" rel="stylesheet">
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        background-image: url(background.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        font-family: 'Mulish', sans-serif;
-    }
-
-    
-    h1 {
-        font-size: 40px;
-        text-align: center;
-        margin-top: 30px;
-        font-family: 'Mulish', sans-serif;
-        color: #3B3B98;
-        letter-spacing: 3px;
-    }
-
-    h2 {
-        font-size: 30px;
-        text-align: center;
-        color: #2C3A47;
-        margin-bottom: 40px;
-        font-style: italic;
-    }
-
-    input:focus {
-        outline: none;
-    }
-
-    /* Box */
-
-    .boxUtama{
-        margin-top: 4%;
-        margin-left: 50%;
-        transform: translateX(-47%);
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-    }
-    .box1, .box2{
-        float: left;
-    }
+        body {
+            background-image: url(background.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Mulish', sans-serif;
+        }
+    
+        
+        h1 {
+            font-size: 40px;
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Mulish', sans-serif;
+            color: #3B3B98;
+            letter-spacing: 3px;
+        }
+    
+        h2 {
+            font-size: 30px;
+            text-align: center;
+            color: #2C3A47;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+    
+        input:focus {
+            outline: none;
+        }
+    
+        /* Box */
+    
+        .boxUtama{
+            margin-top: 4%;
+            margin-left: 50%;
+            transform: translateX(-47%);
+            
+        }
+        .box1, .box2{
+            float: left;
+        }
+    
+        .box1 {
+            background-color: rgba(200, 214, 229,0.8);
+            width: 350px;
+            height: 600px;
+            padding-top: 100px;
+        }
+    
+        .box2 {
+            background-color: rgba(220, 221, 225,0.8);
+            width: 350px;
+            height: 600px;
+        }
+    
+        /* Text sign in*/
+    
+    
+        .sign-in {
+            margin-left: 70px;
+        }
+    
+        .sign-in label{
+            font-weight: 200;
+            font-size: 20px;
+        }
+    
+        .sign-in input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #a4b0be;
+            padding-right: 40px;
+        }
+    
+        .sign-in input[type="email"] {
+            margin-bottom: 40px;
+        }
+    
+        .box1 button {
+            margin-top: 80px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 50px;
+            background-color: #2ed573;
+            border: 1px solid transparent;
+            border-radius: 30px;
+            color:#f1f2f6;
+            display: block;
+            transition: 0.3s;
+        }
+    
+        .box1 button:hover {
+            background-color: transparent;
+            color: #23ad5c;
+            border: 1px solid #2ed573;
+            cursor: pointer;
+        }
+    
+        .box1 a:link,
+        .box1 a:visited {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 12px;
+            margin-left: 36.3%;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+    
+        .box1 a:hover,
+        .box1 a:active {
+            color: #0000c0;
+        }
+        /* Text register */
+    
+        .register {
+            margin-top: -5px;
+            margin-left: 60px;
+        }
+        .register label{
+            font-weight: 200;
+        }
+    
+        .box2 h2 {
+            margin-top: 20px;
+        }
+    
+        .register input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #a4b0be;
+            padding-right: 40px;
+        }
+    
+        .box2 button {
+            margin-top: 5px;
+            margin-left: 40%;
+            transform: translateX(-50%);
+            padding: 10px 50px;
+            background-color: #38ada9;
+            border: 1px solid transparent;
+            border-radius: 30px;
+            color:#f1f2f6;
+            display: block;
+            transition: 0.3s;
+        }
+    
+        .box2 button:hover {
+            background-color: transparent;
+            color: #38ada9;
+            border: 1px solid #38ada9;
+            cursor: pointer;
+        }
+    
+        input[type="date"] {
+            padding-right: 21%;
+            font-weight: 200;
+            font-family: inherit;
+        }
+    
+        label[for="pria"] {
+            margin-right: 10px;
+        }
+    
+        input[type="radio"] {
+            margin-top: 8px;
+            margin-right: 4px;
+            border: solid white;
+        }
+    
+        input[type="checkbox"] {
+            margin-top: 5px;
+            margin-right: 4px;
+            background-color: #eee;
+        }
+    </style>
+</head>
 
-    .box1 {
-        background-color: rgba(200, 214, 229,0.8);
-        width: 350px;
-        height: 600px;
-        padding-top: 100px;
-    }
-
-    .box2 {
-        background-color: rgba(220, 221, 225,0.8);
-        width: 350px;
-        height: 600px;
-    }
-
-    /* Text sign in*/
-
-
-    .sign-in {
-        margin-left: 70px;
-    }
-
-    .sign-in label{
-        font-weight: 200;
-        font-size: 20px;
-    }
-
-    .sign-in input {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid #a4b0be;
-        padding-right: 40px;
-    }
-
-    .sign-in input[type="email"] {
-        margin-bottom: 40px;
-    }
-
-    .box1 button {
-        margin-top: 80px;
-        margin-left: 50%;
-        transform: translateX(-50%);
-        padding: 10px 50px;
-        background-color: #2ed573;
-        border: none;
-        border-radius: 30px;
-        color:#f1f2f6;
-        display: block;
-    }
-
-    .box1 a:link,
-    .box1 a:visited {
-        display: inline-block;
-        margin-top: 12px;
-        font-size: 12px;
-        margin-left: 36.3%;
-        text-decoration: none;
-    }
-
-    /* Text register */
-
-    .register {
-        margin-top: -5px;
-        margin-left: 60px;
-    }
-    .register label{
-        font-weight: 200;
-    }
-
-    .box2 h2 {
-        margin-top: 20px;
-    }
-
-    .register input {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid #a4b0be;
-        padding-right: 40px;
-    }
-
-    .box2 button {
-        margin-top: 5px;
-        margin-left: 40%;
-        transform: translateX(-50%);
-        padding: 10px 50px;
-        background-color: #38ada9;
-        border: none;
-        border-radius: 30px;
-        color:#f1f2f6;
-        display: block;
-    }
-
-    input[type="date"] {
-        padding-right: 21%;
-        font-weight: 200;
-        font-family: inherit;
-    }
-
-    label[for="pria"] {
-        margin-right: 10px;
-    }
-
-    input[type="radio"] {
-        margin-top: 8px;
-        margin-right: 4px;
-        border: solid white;
-    }
-
-    input[type="checkbox"] {
-        margin-top: 5px;
-        margin-right: 4px;
-        background-color: #eee;
-    }
-
-
-
-</style>
 <body>
     <h1>Fill in this form</h1>
     <div class="boxUtama">

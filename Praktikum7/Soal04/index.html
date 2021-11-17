@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aloha</title>
+    <style>
+        .container {
+            width:300px;
+            height: 50px;
+            margin: auto;
+            border : 3px solid black;
+        }
+
+        .isi {
+            background-color: red;
+            width: 10px;
+            
+            height: 50px;
+        }
+    </style>
+
+</head>
+<body>
+    <script>
+        document.write("<div class=container>");
+        let input = prompt("masukan input (0-9)");
+        if ((input > 9) || ( input < 0)) {
+            alert("input salah silahkan reload page");
+        }
+        else {
+            let hue = ((input*1)+1)*10;
+            let length = (((input*1)+1)*30)
+            
+            document.write("<div style='background-color:hsl("+ hue  +",70%,50%); width:"+ length + "px; height:50px'>");
+        }
+        document.write("<div>");
+    </script>
+</body>
+</html>

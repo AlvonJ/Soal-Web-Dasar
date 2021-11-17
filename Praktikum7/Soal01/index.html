@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soal 01 Praktikum 7</title>
+</head>
+<body>
+  <script>
+    // mawar = 5000
+    // tulip = 8000
+    // anggrek = 10000
+
+    let jumlahMawar = parseInt(prompt("Berapa mawar yang ingin dibeli? (Rp 5000)"));
+    let jumlahTulip = parseInt(prompt("Berapa tulip yang ingin dibeli? (Rp 8000)"));
+    let jumlahAnggrek = parseInt(prompt("Berapa anggrek yang ingin dibeli? (Rp 10000)"));
+
+    let hargaMawar = 5000 * jumlahMawar;
+    let hargaTulip = 8000 * jumlahTulip;
+    let hargaAnggrek = 10000 * jumlahAnggrek;
+    let total = hargaMawar + hargaTulip + hargaAnggrek;
+
+    let bayar = parseInt(prompt("Uang yang dibayarkan adalah"));
+    let kembalian;
+
+    document.write("Anda membeli mawar sebanyak <b>" + jumlahMawar + " bunga</b> dengan harga total Rp." + hargaMawar + "<br>");
+    document.write("Anda membeli tulip sebanyak <b>" + jumlahTulip + " bunga</b> dengan harga total Rp." + hargaTulip + "<br>");
+    document.write("Anda membeli anggrek sebanyak <b>" + jumlahAnggrek + "  bunga</b> dengan harga total Rp." + hargaAnggrek + "<br>");
+    document.write("Total belanjaan anda <b>Rp." + total + "</b><br><br>");
+
+    if (bayar < total) {
+      document.write("Uang anda tidak mencukupi!")
+    } else {
+      kembalian = bayar-total;
+      document.write("Kembalian anda adalah Rp." + kembalian);
+    }
+  </script>
+</body>
+</html>

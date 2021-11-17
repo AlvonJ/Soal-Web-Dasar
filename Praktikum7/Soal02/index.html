@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 02 Praktikum 7</title>
+</head>
+<body>
+    <script>
+        let harga = parseInt(prompt("Berapa harga belanjaan anda?"));
+        let bayar = parseInt(prompt("Berapa uang yang dibayar?"));
+
+        let kembalian = bayar-harga;
+        
+        document.write("Harga belanjaan anda adalah Rp." + harga + "<br>");
+        document.write("Uang yang dibayarkan adalah Rp." + bayar + "<br><br>");
+
+        document.write("Kembalian anda adalah Rp." + kembalian + " dengan rincian sebagai berikut: " + "<br>");
+
+        let lembar;
+        let hasil;
+
+
+        if (kembalian >= 100000) {
+            lembar = Math.floor(kembalian / 100000);
+            hasil = 100000 * lembar;
+            document.write("Uang Rp.100000 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian >= 50000) {
+            lembar = Math.floor(kembalian / 50000);
+            hasil = 50000 * lembar;
+            document.write("Uang Rp.50000 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian >= 20000) {
+            lembar = Math.floor(kembalian / 20000);
+            hasil = 20000 * lembar;
+            document.write("Uang Rp.20000 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian >= 10000) {
+            lembar = Math.floor(kembalian / 10000);
+            hasil = 10000 * lembar;
+            document.write("Uang Rp.10000 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian >= 5000) {
+            lembar = Math.floor(kembalian / 5000);
+            hasil = 5000 * lembar;
+            document.write("Uang Rp.5000 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian >= 2000) {
+            lembar = Math.floor(kembalian / 2000);
+            hasil = 2000 * lembar;
+            document.write("Uang Rp.2000 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian >= 1000) {
+            lembar = Math.floor(kembalian / 1000);
+            hasil = 1000 * lembar;
+            document.write("Uang Rp.1000 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian >= 500) {
+            lembar = Math.floor(kembalian / 500);
+            hasil = 500 * lembar;
+            document.write("Uang Rp.500 sebanyak " + lembar + " lembar.<br>");
+            kembalian -= hasil
+        }
+        if (kembalian > 0) {
+            document.write("Sisa kembalian Rp." + kembalian);
+        }
+        
+    </script>
+</body>
+</html>

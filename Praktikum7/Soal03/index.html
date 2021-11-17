@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>besar kecil</title>
+    <style>
+
+        div {
+            border: 2px solid black;
+            width: 3em;
+            padding :2px;
+            text-align: center;
+            margin : auto;
+        }
+
+        .small {
+            
+            background-color: #6ed36e;
+        }
+
+        .rite {
+            background-color: rgb(212, 212, 63);
+            
+        }
+
+        .big {
+            background-color: rgb(223, 57, 57);
+            color: white;
+            -webkit-text-stroke: 2px  rgb(37, 4, 4);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let input = prompt("masukan sebuah bilangan (0-9)");
+
+        if (input < 5){
+            document.write("<div class=small style='font-size:"+ input + "em;'>");
+        }
+        else if (input == 5) {
+            document.write("<div class=rite style='font-size:"+ input +"em;'>");
+        }
+        else {
+            document.write("<div class=big style='font-size:"+ input +"em;'>");
+        }
+        document.write(input + "</div>");
+    </script>
+</body>
+</html>

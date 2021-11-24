@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid</title>
+    <style>
+        .box {
+            display: table-cell;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-text-stroke: 0.2px black;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .break {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+   
+    </style>
+
+</head>
+
+<body>  
+    <div class="break">
+        <script>
+            let n = prompt("besar angka : ");
+         
+            for (let i =0;i< n ;i++){
+                for (let j=0;j<i; j++) {
+                    let r = Math.floor(Math.random()* 205);
+                    let g = Math.floor(Math.random()* 205);
+                    let b = Math.floor(Math.random()* 205);
+                    document.write("<div class=box style='width:" + (100/i) +  "%;background-color:rgb(" + r + "," + g+ ", " +b + "); '>"+ (j+1) + "</div>");
+                }
+            }
+        </script>
+    </div>
+
+   
+    
+</body>
+</html>

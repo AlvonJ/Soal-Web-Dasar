@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 04 praktikum 8</title>
+    
+</head>
+<body>
+    <script>
+        
+        let baris = parseInt(prompt("Jumlah baris: "));
+        let kolom = parseInt(prompt("Jumlah kolom: "));
+        let warna1 = parseInt(prompt("Warna 1 (Hexadecimal): "));
+        let warna2 = parseInt(prompt("Warna 2 (Hexadecimal): "));
+
+        document.write("<table cellpadding='0' cellspacing='0'>");
+        for(let i=1; i<=baris; i++) {
+            document.write(`<tr>`);
+            for(let j=1; j<=kolom; j++) {
+                if (i%2 == 0){
+                    if (j%2 == 0) {
+                        document.write(`<td style="background-color:#${warna1}; width: 50px">${i * j}</td>`);
+                    } else {
+                        document.write(`<td style="background-color:#${warna2}; width: 50px">${i * j}</td>`);
+                    }
+                } else {
+                    if (j%2 == 1) {
+                        document.write(`<td style="background-color:#${warna1}; width: 50px">${i * j}</td>`);
+                    } else {
+                        document.write(`<td style="background-color:#${warna2}; width: 50px">${i * j}</td>`);
+                    }
+                }
+            }
+            document.write(`</tr>`);
+        }
+
+        document.write("</table>")
+    </script>
+</body>
+</html>

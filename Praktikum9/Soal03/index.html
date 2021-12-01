@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        table {
+            border: 2px solid black;
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        .obstacle {
+            background-color: rgb(138, 32, 32);
+            color: rgb(218, 193, 146);
+        }
+
+        td {
+            
+            border: 0.5px solid black;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function createTable(row, column, obstacleCount) {
+            let oPos = [];
+            let numbers = [];
+            for (let i = 0; i < row * column; i++) {
+                numbers.push(i);
+            }
+
+            for (let i = 0; i < obstacleCount; i++) {
+                let r = Math.floor(Math.random() * numbers.length);
+                let temp = numbers.splice(r, 1).pop();
+                oPos.push(temp);
+            }
+            document.write("<table>");
+            console.log(oPos);
+            for (let i = 0; i < row; i++) {
+                document.write("<tr>");
+                for (let j = 0; j < column; j++) {
+                    let found = false;
+                    for (let z = 0; z < oPos.length; z++) {
+                        if ((i * row + j) == oPos[z]) {
+                            found = true;
+                        }
+                    }
+                    if (found) {
+                        document.write("<td class=obstacle>" + (i * row + j) + "</td>");
+                        obstacleCount--;
+                    }
+                    else {
+                        document.write("<td>" + (i * row + j) + "</td>");
+                    }
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+        }
+
+        let obsNumber= parseInt(prompt("minta berapa obstacle?"));
+        if ((obsNumber < 25) && (obsNumber > 0)) {
+            createTable(5, 5, obsNumber);
+        }
+    </script>
+
+</body>
+
+</html>

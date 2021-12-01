@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 2 Praktikum 9</title>
+    <style>
+        table {
+            text-align: center;
+        }
+
+        td, th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const nama = [];
+        const warna = [];
+        let input_nama;
+        let input_warna;
+
+        input_nama = prompt("Masukkan nama: ");
+        while (input_nama.toLowerCase() != "stop") {
+            input_warna = prompt("Masukkan warna kesukaan (english): ");
+
+            nama.push(input_nama);
+            warna.push(input_warna);
+
+            input_nama = prompt("Masukkan nama: ");
+        }   
+
+        input_cari = prompt("Masukkan warna yang ingin dicari: ");
+
+        // Fungsi buat tabel
+        const buat_tabel = function() {
+            document.write("<table cellpadding=5px cellspacing=0>");
+            document.write("<tr style='background-color: #888;'>");
+            document.write("<th>Nama</th>");
+            document.write("<th>Warna kesukaan</th>");
+            document.write("</tr>");
+            for (let i = 0; i < nama.length; i++) {
+                document.write(`<tr style="background-color: ${warna[i].toLowerCase()};">`);
+                
+                document.write(`<td>${nama[i]}</td>`)
+                document.write(`<td>${warna[i]}</td>`)
+    
+                document.write('</tr>');
+            }
+            document.write("</table>");
+
+        }
+
+        // Fungsi cari kesamaan warna
+        const cari = function() {
+            let counter = 0;
+            let nama_sama = "";
+            for (let i = 0; i < nama.length; i++) {
+                if (input_cari.toLowerCase() == warna[i].toLowerCase()) {
+                    counter += 1;
+                    nama_sama += nama[i] + " ";
+                }
+            }
+    
+            document.write("<br>");
+            if (counter == 0) {
+                document.write("Tidak ada yang menyukai warna tersebut.");
+            } else {
+                document.write(`Ada ${counter} orang yang menyukai warna ${input_cari} yaitu ${nama_sama}`);
+            }
+        }
+
+        buat_tabel();
+        cari();
+
+    </script>
+</body>
+</html>

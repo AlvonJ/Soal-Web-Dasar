@@ -7,219 +7,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soal 01 Praktikum 9</title>
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: sans-serif;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            padding-left: 10px;
-        }
-
-        .penjumlahan {
-            background-color: darkorange;
-        }
-
-        .pengurangan {
-            background-color: deepskyblue;
-        }
-
-        .perkalian {
-            background-color: deeppink;
-        }
-
-        .bilangan {
-            background-color: tomato;
-        }
-
-        input {
-            padding: 5px;
-        }
-
         .container {
-            display: flex;
-            align-items: center;
-            margin-left: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .operator {
-            margin: 0 10px;
-            font-size: 20px;
+        .bulat {
+            display: inline-block;
+            width: 50px;
+            border-radius: 50%;
+            background-color:lightslategrey;
+            line-height: 50px;
+            text-align: center;
         }
 
-        .hitung {
-            padding: 6px 12px;
-            margin-left: 20px;
-            background-color: skyblue;
-            border: 2px solid darkcyan;
-            cursor: pointer;
-        }
-
-        .baris {
-            display: flex;
-            align-items: center;
-            margin: 10px 0 30px 10px;
-        }
-
-        .random {
-            padding: 8px 16px;
-            margin-right: 20px;
-            background-color: limegreen;
-            border: 2px solid green;
-            cursor: pointer;
-        }
-
-        .hasil {
-            font-size: 14px;
-        }
     </style>
 </head>
-
 <body>
-    <h1 class="penjumlahan">Penjumlahan</h1>
     <div class="container">
-        <input type="text" class="random-number-tambah" readonly>
-        <span class="operator">+</span>
-        <input type="text" class="random-number-tambah" readonly>
-        <span class="operator">=</span>
-        <input type="text" class="check-number-tambah">
-        <button class="hitung" id="tambah">Hitung</button>
+        <script>
+            let jumlah = parseInt(prompt("Berapa NxN bola yang ingin dibuat?"))
+
+            const buat_kotak = function (jumlah) {
+                for (let i = jumlah; i > 0; i--) {
+                    for (let j = jumlah * i; j > (jumlah * (i-1)); j--) {
+                        if (jumlah >= 4 && j < 10) {
+                            document.write(`<div class="bulat">0${j}</div>`);
+                        } else {
+                            document.write(`<div class="bulat">${j}</div>`);
+                        }
+                    }
+                    document.write("<br>");
+                };
+            };
+
+            buat_kotak(jumlah);
+        </script>
     </div>
-    <div class="baris">
-        <button class="random" id="random-tambah">Random</button>
-        <span class="hasil"></span>
-    </div>
-    <h1 class="pengurangan">Pengurangan</h1>
-    <div class="container">
-        <input type="text" class="random-number-kurang" readonly>
-        <span class="operator">-</span>
-        <input type="text" class="random-number-kurang" readonly>
-        <span class="operator">=</span>
-        <input type="text" class="check-number-kurang">
-        <button class="hitung" id="kurang">Hitung</button>
-    </div>
-    <div class="baris">
-        <button class="random" id="random-kurang">Random</button>
-        <span class="hasil"></span>
-    </div>
-    <h1 class="perkalian">Perkalian</h1>
-    <div class="container">
-        <input type="text" class="random-number-kali" readonly>
-        <span class="operator">*</span>
-        <input type="text" class="random-number-kali" readonly>
-        <span class="operator">=</span>
-        <input type="text" class="check-number-kali">
-        <button class="hitung" id="kali">Hitung</button>
-    </div>
-    <div class="baris">
-        <button class="random" id="random-kali">Random</button>
-        <span class="hasil"></span>
-    </div>
-    <h1 class="bilangan">Bilangan</h1>
-    <div class="container">
-        <input type="text" class="random-number-bilangan" readonly>
-        <span class="operator">=</span>
-        <input type="text" class="check-number-bilangan">
-        <span class="koma">&nbsp;,&nbsp;</span>
-        <input type="text" class="check-number-bilangan">
-        <span class="koma">&nbsp;,&nbsp;</span>
-        <input type="text" class="check-number-bilangan">
-        <button class="hitung" id="bilangan">Hitung</button>
-    </div>
-    <div class="baris">
-        <button class="random" id="random-bilangan">Random</button>
-        <span class="hasil"></span>
-    </div>
-    <script>
-        const randomInputTambah = document.getElementsByClassName("random-number-tambah");
-        const randomInputKurang = document.getElementsByClassName("random-number-kurang");
-        const randomInputKali = document.getElementsByClassName("random-number-kali");
-        const randomInputBilangan = document.getElementsByClassName("random-number-bilangan")[0];
-        const randomTambah = document.getElementById("random-tambah");
-        const randomKurang = document.getElementById("random-kurang");
-        const randomKali = document.getElementById("random-kali");
-        const randomBilangan = document.getElementById("random-bilangan");
-        const btnTambah = document.getElementById("tambah");
-        const btnKurang = document.getElementById("kurang");
-        const btnKali = document.getElementById("kali");
-        const btnBilangan = document.getElementById("bilangan");
-        const hasilTambah = document.getElementsByClassName("check-number-tambah")[0];
-        const hasilKurang = document.getElementsByClassName("check-number-kurang")[0];
-        const hasilKali = document.getElementsByClassName("check-number-kali")[0];
-        const hasilBilangan = document.getElementsByClassName("check-number-bilangan");
-        const hasil = document.getElementsByClassName("hasil");
-
-        let random;
-
-        randomTambah.addEventListener('click', function () {
-            for (let i = 0; i < randomInputTambah.length; i++) {
-                random = Math.floor((Math.random() * 900) + 100);
-                randomInputTambah[i].setAttribute('value', random);
-            }
-        })
-
-        randomKurang.addEventListener('click', function () {
-            for (let i = 0; i < randomInputKurang.length; i++) {
-                random = Math.floor((Math.random() * 900) + 100);
-                randomInputKurang[i].setAttribute('value', random);
-            }
-        })
-
-        randomKali.addEventListener('click', function () {
-            for (let i = 0; i < randomInputKali.length; i++) {
-                random = Math.floor(Math.random() * 100);
-                randomInputKali[i].setAttribute('value', random);
-            }
-        })
-
-        randomBilangan.addEventListener('click', function () {
-            random = Math.floor((Math.random() * 900) + 100);
-            randomInputBilangan.setAttribute('value', random);
-        })
-
-        btnTambah.addEventListener('click', function () {
-            if ((parseInt(randomInputTambah[0].value) + parseInt(randomInputTambah[1].value)) == parseInt(
-                    hasilTambah.value)) {
-                hasil[0].textContent = "Jawaban benar";
-            } else {
-                hasil[0].textContent = "Jawaban salah";
-            }
-        })
-
-        btnKurang.addEventListener('click', function () {
-            if ((parseInt(randomInputKurang[0].value) - parseInt(randomInputKurang[1].value)) == parseInt(
-                    hasilKurang.value)) {
-                hasil[1].textContent = "Jawaban benar";
-            } else {
-                hasil[1].textContent = "Jawaban salah";
-            }
-        })
-
-        btnKali.addEventListener('click', function () {
-            if ((parseInt(randomInputKali[0].value) * parseInt(randomInputKali[1].value)) == parseInt(hasilKali
-                    .value)) {
-                hasil[2].textContent = "Jawaban benar";
-            } else {
-                hasil[2].textContent = "Jawaban salah";
-            }
-        })
-
-        btnBilangan.addEventListener('click', function () {
-            if (randomInputBilangan.value.substr(0, 1) == hasilBilangan[0].value && randomInputBilangan.value
-                .substr(1, 1) == hasilBilangan[1].value && randomInputBilangan.value.substr(-1, 1) ==
-                hasilBilangan[2].value) {
-                hasil[3].textContent = "Jawaban benar";
-            } else {
-                hasil[3].textContent = "Jawaban salah";
-            }
-        })
-    </script>
 </body>
 
 </html>

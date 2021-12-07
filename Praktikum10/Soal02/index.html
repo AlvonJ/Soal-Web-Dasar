@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum 10 nomor 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 300px;
+        }
+
+        .box {
+            box-shadow: 0 0 0 1px #333;
+            border: 1px solid #333;
+            width: 100px;
+            height: 100px;
+            float: left;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+            font-size: 70px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .player-turn {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .restart {
+            margin: 20px auto;
+            display: block;
+            padding: 12px 24px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div class="container">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+        <div class="box" id="box4"></div>
+        <div class="box" id="box5"></div>
+        <div class="box" id="box6"></div>
+        <div class="box" id="box7"></div>
+        <div class="box" id="box8"></div>
+        <div class="box" id="box9"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="player-turn">X's turn</div>
+    <button class="restart">Restart game</button>
+    <script>
+        const box1 = document.getElementById("box1");
+        const box2 = document.getElementById("box2");
+        const box3 = document.getElementById("box3");
+        const box4 = document.getElementById("box4");
+        const box5 = document.getElementById("box5");
+        const box6 = document.getElementById("box6");
+        const box7 = document.getElementById("box7");
+        const box8 = document.getElementById("box8");
+        const box9 = document.getElementById("box9");
+        const box = document.getElementsByClassName("box");
+        const player = document.getElementsByClassName("player-turn")[0];
+        const restart = document.getElementsByClassName("restart")[0];
+
+        let currentPlayer = "X";
+        let playing = true;
+
+        const selectWinner = function (a, b, c) {
+            a.classList.add("yellow");
+            b.classList.add("yellow");
+            c.classList.add("yellow");
+            playing = false;
+        };
+
+        const clickBox = function () {
+            for (let i = 0; i < 9; i++) {
+                box[i].addEventListener('click', function () {
+                    if (playing) {
+
+                        if (this.innerHTML === '') {
+                            this.innerHTML = currentPlayer;
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+                            player.innerHTML = `${currentPlayer}'s turn`;
+                        }
+
+                        if (box1.innerHTML !== "" && box1.innerHTML === box2.innerHTML && box1.innerHTML ===
+                            box3.innerHTML) {
+                            selectWinner(box1, box2, box3);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+                        }
+
+                        if (box1.innerHTML !== "" && box1.innerHTML === box4.innerHTML && box1.innerHTML ===
+                            box7.innerHTML) {
+                            selectWinner(box1, box4, box7);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+
+                        }
+
+                        if (box1.innerHTML !== "" && box1.innerHTML === box5.innerHTML && box1.innerHTML ===
+                            box9.innerHTML) {
+                            selectWinner(box1, box5, box9);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+
+                        }
+
+                        if (box2.innerHTML !== "" && box2.innerHTML === box5.innerHTML && box2.innerHTML ===
+                            box8.innerHTML) {
+                            selectWinner(box2, box5, box8);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+
+                        }
+
+                        if (box3.innerHTML !== "" && box3.innerHTML === box5.innerHTML && box3.innerHTML ===
+                            box7.innerHTML) {
+                            selectWinner(box3, box5, box7);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+
+                        }
+
+                        if (box3.innerHTML !== "" && box3.innerHTML === box6.innerHTML && box3.innerHTML ===
+                            box9.innerHTML) {
+                            selectWinner(box3, box6, box9);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+
+                        }
+
+                        if (box4.innerHTML !== "" && box4.innerHTML === box5.innerHTML && box4.innerHTML ===
+                            box6.innerHTML) {
+                            selectWinner(box4, box5, box6);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+
+
+                        }
+
+                        if (box7.innerHTML !== "" && box7.innerHTML === box8.innerHTML && box7.innerHTML ===
+                            box9.innerHTML) {
+                            selectWinner(box7, box8, box9);
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+
+                            player.innerHTML = `Player ${currentPlayer} has won`;
+
+                        }
+
+                    }
+                })
+            };
+        };
+
+        restart.addEventListener('click', function() {
+            playing = true;
+            for (let i = 0; i < 9; i++) {
+                box[i].innerHTML = '';
+                box[i].classList.remove("yellow");
+            }
+            currentPlayer = "X";
+            player.innerHTML = `${currentPlayer}'s turn`;
+
+        })
+
+        clickBox();
+    </script>
+</body>
+
+</html>

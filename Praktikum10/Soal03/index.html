@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess THat number</title>
+    <style>
+        .container {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .box {
+            display: table-cell;
+            border: 3px solid black;
+            text-align: center;
+            vertical-align: bottom;
+            width: 50px;
+            height: 50px;
+            font-size: 2em;
+        }
+
+        .selected {
+            border: 3px solid rgb(133, 34, 34);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+        <div class="box" id="box4"></div>
+        <div class="box" id="box5"></div>
+        <div style="display: flex; flex-direction: column;">
+            <button id="btnGuess">Guess</button>
+            <button id="btnReset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let selected = 1;
+        let value = [0, 0, 0, 0, 0];
+        let angka_target = 0;
+
+        function guess() {
+            let sum = "";
+
+            for (let i = 1; i <= 5; i++) {
+                let box = document.querySelector("#box" + i);
+                sum += box.innerHTML;
+            }
+
+            let guess = parseInt(sum);
+            if (guess == angka_target) {
+                alert("you win ");
+            }
+            else {
+                if (guess > angka_target) {
+                    alert("terlalu besar");
+                }
+                else {
+                    alert("terlalu kecil");
+                }
+               
+            }
+        }
+
+        function reset() {
+            selected = 1;
+            angka_target = Math.floor(Math.random() * 100000);
+
+
+            for (let i = 1; i <= 5; i++) {
+                let box = document.querySelector("#box" + i);
+                box.innerHTML = 0;
+                value[i] = 0;
+                if (i == selected) {
+                    box.classList.add("selected");
+                }
+                else {
+                    box.classList.remove("selected");
+                }
+            }
+        }
+
+        reset();
+        document.body.addEventListener("keydown", (evt) => {
+       
+            //down
+            if (evt.keyCode == 40) {
+                if (value[selected] > 0) value[selected] -= 1;
+                document.querySelector("#box" + selected).innerHTML = value[selected];
+            }
+
+            //up
+            if (evt.keyCode == 38) {
+                if (value[selected] < 9) value[selected] += 1
+                document.querySelector("#box" + selected).innerHTML = value[selected];
+
+            }
+            if (evt.keyCode == 37) {
+                if (selected > 1) {
+                    document.querySelector("#box" + selected).classList.remove("selected");
+                    selected--;
+                    document.querySelector("#box" + selected).classList.add("selected");
+                }
+
+            }
+            if (evt.keyCode == 39) {
+
+                if (selected < 5) {
+
+                    document.querySelector("#box" + selected).classList.remove("selected");
+                    selected++;
+                    document.querySelector("#box" + selected).classList.add("selected");
+                }
+
+            }
+
+        });
+        
+
+        let btn = document.querySelector("#btnReset");
+        console.log(btn);
+        btn.addEventListener("click",reset);
+        let btn2 = document.querySelector("#btnGuess");
+        btn2.addEventListener("click", guess);
+        
+    </script>
+</body>
+
+</html>

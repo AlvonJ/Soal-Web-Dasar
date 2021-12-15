@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            border: 2px solid black;
+            width: 60px;
+            height: 60px;
+            display: table-cell;
+            text-align: center;
+            font-size: 2em;
+            line-height: 60px;
+        }
+
+        .wide {
+            width: 600px;
+            margin: auto;
+            justify-content: space-evenly;
+        }
+
+        .clickable:hover {
+            background-color: gray;
+        }
+
+        .clickable:active {
+            background-color: black;
+            color: white;
+        }
+
+        .clickable {
+            cursor: grab;
+            font-size: 1em;
+        }
+
+        .status {
+            padding: 5px;
+            width: 636px;
+            height: 100px;
+            margin: auto auto;
+            margin-bottom: 10px;
+            border: 2px solid black;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        let enemy_pos = 1;
+        let user_pos = 1;
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+        <div class="box" id="box4"></div>
+        <div class="box" id="box5"></div>
+        <div class="box" id="box6"></div>
+        <div class="box" id="box7"></div>
+        <div class="box" id="box8"></div>
+        <div class="box" id="box9"></div>
+        <div class="box" id="box10"></div>
+    </div>
+    <div class="container">
+        <div class="box" id="enemy1"></div>
+        <div class="box" id="enemy2"></div>
+        <div class="box" id="enemy3"></div>
+        <div class="box" id="enemy4"></div>
+        <div class="box" id="enemy5"></div>
+        <div class="box" id="enemy6"></div>
+        <div class="box" id="enemy7"></div>
+        <div class="box" id="enemy8"></div>
+        <div class="box" id="enemy9"></div>
+        <div class="box" id="enemy10"></div>
+    </div>
+    <br>
+    <div class="status">
+
+    </div>
+
+    <div class="container wide">
+        <div class="box clickable" id="option1">Batu</div>
+        <div class="box clickable" id="option2">Gunting</div>
+        <div class="box clickable" id="option3">Kertas</div>
+    </div>
+    <script>
+
+
+        function doSuit(choice) {
+            //1 = batu 2 gunting 3 kertas
+            let enemy_move = Math.round(Math.random() * 3);
+
+            if (choice == 1) {
+                if (enemy_move == 2) {
+                    //batu ketemu gunting player win
+                    if (user_pos < 10) {
+                        user_pos += 1;
+                        document.querySelector(".status").innerHTML +="Batu(User) ketemu Gunting(com), Pemain Maju <br>";
+                    }
+                    else {
+                        if (confirm("You Win, Try Again ? ")) {
+                            reset();
+                        }
+                    }
+                }
+                if (enemy_move == 3) {
+                    if (enemy_pos < 10) {
+                        enemy_pos += 1;
+                        document.querySelector(".status").innerHTML +="Batu(User) ketemu Kertas(com), Musuh Maju <br>";
+                    }
+                    else {
+                        if (confirm("You Lose, Try Again ? ")) {
+                            reset();
+                        }
+                    }
+                }
+                else {
+                    document.querySelector(".status").innerHTML +="Batu(User) ketemu Batu(com), Draw <br>";
+                }
+            }
+            else if (choice == 2) {
+                if (enemy_move == 3) {
+                    //gunting ketemu kertas player win
+                    if (user_pos < 10) {
+                        user_pos += 1;
+                        document.querySelector(".status").innerHTML +="Gunting(User) ketemu Kertas(com), Pemain Maju <br>";
+                
+                    }
+                    else {
+                        if (confirm("You Win, Try Again ? ")) {
+                            reset();
+                        }
+                    }
+                }
+                if (enemy_move == 1) {
+                    if (enemy_pos < 10) {
+                        enemy_pos += 1;
+                        document.querySelector(".status").innerHTML +="Gunting(User) ketemu Batu(com), Musuh Maju <br>";
+                    }
+                    else {
+                        if (confirm("You Lose, Try Again ? ")) {
+                            reset();
+                        }
+                    }
+                }
+                else {
+                    document.querySelector(".status").innerHTML +="Gunting(User) ketemu Gunting(com), Draw <br>";
+                }
+            }
+            else {
+                if (enemy_move == 1) {
+                    //kertas ketemu batu player win
+                    if (user_pos < 10) {
+                        user_pos += 1;
+                        document.querySelector(".status").innerHTML +="Kertas(User) ketemu Batu(com), Pemain Maju <br>";
+              
+                    }
+                    else {
+                        if (confirm("You Win, Try Again ? ")) {
+                            reset();
+                        }
+                    }
+                }
+                if (enemy_move == 2) {
+                    if (enemy_pos < 10) {
+                        enemy_pos += 1;
+                        document.querySelector(".status").innerHTML +=  "Kertas(User) ketemu Gunting(com), Musuh Maju <br>";
+                    }
+                    else {
+                        if (confirm("You Lose, Try Again ? ")) {
+                            reset();
+                        }
+                    }
+                }
+                else {
+                    document.querySelector(".status").innerHTML +="Kertas(User) ketemu Kertas(com), Draw <br>";
+                }
+            }
+       
+        }
+
+
+        function reset() {
+            enemy_pos = 1;
+            user_pos = 1;
+            document.querySelector(".status").innerHTML = "";
+            updateView();
+        }
+
+        reset();
+
+        function updateView() {
+            for (let i = 1; i <= 10; i++) {
+                if (i == enemy_pos) {
+                    document.querySelector("#enemy" + i).innerHTML = "E";
+                }
+                else {
+                    document.querySelector("#enemy" + i).innerHTML = "";
+                }
+                if (i == user_pos) {
+                    document.querySelector("#box" + i).innerHTML = "P";
+                }
+                else {
+                    document.querySelector("#box" + i).innerHTML = "";
+                }
+            }
+
+            let status = document.querySelector(".status");
+            status.scrollTop = status.scrollHeight;
+        }
+
+        document.querySelectorAll(".clickable").forEach((el) => {
+            // console.log(el.id);
+            el.addEventListener('click', (evt) => {
+                let choice = parseInt(evt.target.id.substr(evt.target.id.length - 1, 1));
+                doSuit(choice);
+                updateView();
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

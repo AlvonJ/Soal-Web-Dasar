@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alvon Jovanus 2072011">
+    <title>Drag and Drop</title>
+    <style>
+        #kotak1 {
+            background-color: azure;
+            width: 150px;
+            height: 150px;
+            margin-left: 550px;
+            border: 1px solid deepskyblue;
+            display: inline-block;
+        }
+
+        #kotak2 {
+            background-color: azure;
+            width: 150px;
+            height: 150px;
+            margin-left: -2px;
+            border: 1px solid deepskyblue;
+            display: inline-block;
+        }
+
+        #kotak3 {
+            background-color: azure;
+            width: 150px;
+            height: 150px;
+            border: 1px solid deepskyblue;
+            margin-top: -2px;
+            margin-left: 550px;
+            display: inline-block;
+        }
+
+        #kotak4 {
+            background-color: azure;
+            width: 150px;
+            height: 150px;
+            border: 1px solid deepskyblue;
+            margin-left: -2px;
+            margin-top: -2px;
+            display: inline-block;
+        }
+
+        #myimage1,
+        #myimage2,
+        #myimage3,
+        #myimage4 {
+            width: 150px;
+            height: 150px;
+        }
+
+        #gambar1 {
+            display: flex;
+            margin-left: 400px;
+            margin-top: 35px;
+        }
+
+        .restart {
+            background-color: lightsalmon;
+            padding: 12px 15px;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 640px;
+        }
+
+        #footer {
+            background-color: skyblue;
+            text-align: center;
+            margin-top: -10px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="kotak1" ondragover="dragover(event);" ondrop="dropover1(event);"></div>
+    <div id="kotak2" ondragover="dragover(event);" ondrop="dropover2(event);"></div>
+    <div id="kotak3" ondragover="dragover(event);" ondrop="dropover3(event);"></div>
+    <div id="kotak4" ondragover="dragover(event);" ondrop="dropover4(event);"></div>
+
+    <script>
+
+        function restart() {
+            location.reload()
+        }
+
+        let random;
+        let img;
+        let list = [];
+        let temp;
+        let correction;
+
+        function setImage() {
+            document.write("<div id=\"gambar1\">");
+            list.forEach(a => {
+                switch (a) {
+                    case 1:
+                        document.write("<img id=\"myimage1\" src=\"assets\\1.jpg\" draggable=\"true\" ondragstart=\"drag(event)\">");
+                        break;
+                    case 2:
+                        document.write("<img id=\"myimage2\" src=\"assets\\2.jpg\" draggable=\"true\" ondragstart=\"drag(event)\">");
+                        break;
+                    case 3:
+                        document.write("<img id=\"myimage3\" src=\"assets\\3.jpg\" draggable=\"true\" ondragstart=\"drag(event)\">");
+                        break;
+                    case 4:
+                        document.write("<img id=\"myimage4\" src=\"assets\\4.jpg\" draggable=\"true\" ondragstart=\"drag(event)\">");
+                        break;
+                }
+            });
+            document.write("</div>");
+        }
+
+        // Loop untuk mengisi array "list"
+        for (let a = 0; a < 4; a++) {
+            //koreksi akan di reset setiap loop
+            koreksi = 0;
+            random = Math.round(Math.random() * 100) % 4 + 1;
+
+            //cek apakah value random sudah pernah ada di "list" (agar gambar tidak ada yang sama)
+            while (list.includes(random)) {
+                //jika akan ada perbaikan value (agar tidak ada yang sama) maka correction menjadi 1
+                koreksi = 1;
+                temp = Math.round(Math.random() * 100) % 4 + 1;
+                //cek untuk kemungkinan value baru sama dengan value lama
+                if (temp == random || list.includes(temp)) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
+
+            //jika tidak ada koreksi maka value "random" di masukan ke "list"
+            //namun jika ada koreksi maka yang di masukan ke "list" adalah "temp"
+            if (koreksi == 1) {
+                list.push(temp);
+            } else {
+                list.push(random);
+            }
+        }
+
+        //call fungsi untuk me-set image
+        setImage();
+
+        let b = 0;
+
+        function drag(ev) {
+            ev.dataTransfer.setData("isi", ev.target.id);
+        }
+
+        function dragover(ev) {
+            ev.preventDefault();
+        }
+        function dropover1(ev) {
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("isi");
+            if (ev.target.id == "kotak1" && data == "myimage1") {
+                ev.target.appendChild(document.getElementById(data));
+                b++;
+                if (b == 4) {
+                    alert("You Win")
+                }
+            } else {
+                alert("Wrong block")
+            }
+        }
+
+        function dropover2(ev) {
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("isi");
+            if (ev.target.id == "kotak2" && data == "myimage2") {
+                ev.target.appendChild(document.getElementById(data));
+                b++;
+                if (b == 4) {
+                    alert("You Win")
+                }
+            } else {
+                alert("Wrong block")
+            }
+        }
+        function dropover3(ev) {
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("isi");
+            if (ev.target.id == "kotak3" && data == "myimage4") {
+                ev.target.appendChild(document.getElementById(data));
+                b++;
+                if (b == 4) {
+                    alert("You Win")
+                }
+            } else {
+                alert("Wrong block")
+            }
+        }
+        function dropover4(ev) {
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("isi");
+            if (ev.target.id == "kotak4" && data == "myimage3") {
+                ev.target.appendChild(document.getElementById(data));
+                b++;
+                if (b == 4) {
+                    alert("You Win")
+                }
+            } else {
+                alert("Wrong block")
+            }
+        }
+    </script>
+
+    <button id="restart" class="restart" onclick="restart()">Restart Game</button>
+    <div id="footer">Created by Nama Lengkap (NRP) &copy;2021</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alvon Jovanus 2072011">
+    <title>Soal 02 JSON</title>
+    <style>
+        fieldset {
+            display: block;
+            margin: auto;
+            width: 400px;
+            height: 100px;
+        }
+
+        input {
+            width: 300px;
+            height: 30px;
+            margin-left: 40px;
+        }
+
+        button {
+            height: 30px;
+            width: 100px;
+            margin-left: 290px;
+            border: 1px solid black;
+        }
+
+        div {
+            background-color: rgb(153, 241, 207);
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+        }
+
+        * {
+            font-family: 'Segoe UI';
+        }
+    </style>
+    <script>
+        let parsed;
+
+        function read(callback) {
+            const request = new XMLHttpRequest();
+            request.overrideMimeType("application/json");
+            request.open("GET", "assets/cityList.json", true);
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == "200") {
+                    callback(request.responseText);
+                }
+            };
+            request.send();
+        }
+
+        read(data => {
+            parsed = JSON.parse(data);
+            for (let i = 0; i < parsed.city.length; i++) {
+                const element = document.createElement("option");
+                document.getElementById("listkota").appendChild(element);
+                element.innerHTML = parsed.city[i].name;
+            }
+        });
+
+        function submit() {
+            let input = document.getElementById("kota").value;
+            for (let i = 0; i < parsed.city.length; i++) {
+                if (input == parsed.city[i].name) {
+                    let lat = parsed.city[i].coord.lat;
+                    let lon = parsed.city[i].coord.lon;
+                    let country = parsed.city[i].country;
+                    let id = parsed.city[i].id;
+
+                    document.getElementById("city").innerHTML = "City Name " + input + " (" + id + ")";
+                    document.getElementById("country").innerHTML = "Country " + country;
+                    document.getElementById("coordinate").innerHTML = "Coordinates (lat, lon): " + lat + ", " + lon;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>City</legend>
+        <label for="name">Name</label>
+        <input list="listkota" id="kota">
+        <datalist id="listkota">
+        </datalist>
+        <br>
+        <button onclick="submit()" >Submit Query</button>
+    </fieldset>
+    <div>
+        <h1 id="city"></h1>
+        <h3 id="country"></h3>
+        <h3 id="coordinate"></h3>
+    </div>
+</body>
+
+</html>

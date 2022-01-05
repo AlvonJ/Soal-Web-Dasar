@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jquery Animation</title>
+  <style>
+    #container {
+      margin: 20px;
+      padding: 10px;
+      height: 500px;
+      border: 3px solid black;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      background-color: black;
+      overflow: auto;
+    }
+
+    .champion {
+      margin: 5px;
+      width: 25%;
+      height: 350px;
+      display: inline-block;
+      text-align: justify;
+      border: 5px solid black;
+      position: relative;
+      overflow: auto;
+    }
+
+    .title {
+      display: block;
+      text-align: right;
+
+      font-size: 3em;
+      color: rgb(228, 116, 25);
+      background-color: black;
+      padding: 5px;
+    }
+
+    .story {
+      text-align: justify;
+      margin: 5px;
+      font-size: 1.5em;
+      display: block;
+    }
+
+    img {
+      border-radius: 20px;
+      margin: 5px;
+      width: 70px;
+      left: -35px;
+      top: -35px;
+      position: absolute;
+      border: 3px solid rgb(228, 116, 25)
+    }
+
+    .champname {
+      padding: 5px;
+      padding-left: 50px;
+      position: relative;
+      font-size: 2em;
+      font-weight: bold;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      background-color: rgb(112, 87, 3);
+      color: rgb(255, 188, 2);
+    }
+
+    .isi {
+      position: relative;
+      border-right:  2px solid rgb(255, 188, 2);
+      border-bottom:  2px solid rgb(255, 188, 2);
+      border-left:  2px solid rgb(255, 188, 2);
+      padding: 15px;
+      color: white;
+      margin-left: 40px;
+      margin-right: -30px;
+    }
+    .card {
+      margin: 30px;
+      margin-bottom: 3px;
+      margin-left: 40px;
+      text-align: justify;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+    }
+    
+
+    button {
+      display: block;
+      padding: 5px;
+      width: 90%;
+      text-align: center;
+      margin : auto;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script>
+
+    function getThreeChamp() {
+      $.getJSON("data/league.json", function (result) {
+        // console.log(result[0]);
+
+        document.querySelector("#container").innerHTML = "";
+        for (let i = 0; i < 3; i++) {
+          let r = Math.round(Math.random() * result.length);
+          let container = document.querySelector("#container");
+          let card = document.createElement("div");
+          card.className = "card";
+
+          let divIsi = document.createElement("div");
+          let divNama = document.createElement("div");
+          divNama.className = "champname";
+          divIsi.className = "isi";
+          divIsi.innerHTML = result[r].description;
+
+          card.append(divNama);
+          card.append(divIsi);
+          container.append(card);
+          let image = document.createElement("img");
+          image.src = result[r].icon
+          divNama.append(image);
+          divNama.innerHTML += result[r].name;
+
+        }
+      });
+    }
+    $(document).ready(function () {
+      function init() {
+        let jsonObject;
+
+        getThreeChamp();
+
+      }
+      init();
+    });
+  </script>
+</head>
+
+<body>
+  <button id="button1" onclick="getThreeChamp()">Find me 3 random Champion </button>
+  <div id="container"></div>
+</body>
+
+</html>
